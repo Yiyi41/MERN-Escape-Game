@@ -8,7 +8,7 @@ const User = mongoose.model(
     birthdate: Date,
     email: String,
     token: String,
-    hash: String,
+    hashedPwd: String,
     salt: String,
     history: Array,
   }

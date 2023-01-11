@@ -24,7 +24,7 @@ const userRoutes = (app) => {
           hashedPwd: newHash,
           salt: newSalt,
           history: [],
-          token: newToken
+          token: newToken,
         });
         await newUser.save();
         res.status(200).json({ newUser });
@@ -40,29 +40,28 @@ const userRoutes = (app) => {
     try {
       const userToCheck = await User.findOne({ email: req.body.email });
 
-
       if (!userToCheck) {
-        res.json("Email ou Mot de passe incorrect")
+        res.json("Cet email n'existe pas");
       } else {
-
         const saltToCheck = userToCheck.salt;
-        const hashToCheck = SHA256(req.body.password + saltToCheck).toString(encBase64)
-        console.log(userToCheck.hashedPwd)
-        console.log("hashToCheck", hashToCheck)
-        console.log("userToCheck.hashedPwd", userToCheck.hashedPwd)
-
+        const hashToCheck = SHA256(req.body.password + saltToCheck).toString(
+          encBase64
+        );
+        // console.log(userToCheck.hashedPwd);
+        // console.log("hashToCheck", hashToCheck);
+        // console.log("userToCheck.hashedPwd", userToCheck.hashedPwd);
 
         if (hashToCheck === userToCheck.hashedPwd) {
-          res.json("C'est bon !")
-          // res.json(userToCheck.token)
+          // res.json("C'est bon !")
+          res.json({ token: userToCheck.token });
         } else {
-          res.json("Pas bon")
+          res.json("connexion non authorisée");
         }
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  })
+  });
 };
 
 module.exports = userRoutes;
