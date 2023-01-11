@@ -43,7 +43,7 @@ function App() {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Détail</Button>
+            {/* <Button size="small">Détail</Button> */}
             <Button size="small">Réserver</Button>
           </CardActions>
         </Card>
