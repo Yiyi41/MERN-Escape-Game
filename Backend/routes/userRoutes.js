@@ -12,7 +12,6 @@ const userRoutes = (app) => {
       const newToken = uid2(16);
 
       const userToCheck = await User.findOne({ email: req.body.email });
-      //Error with the hashedPwd attribute
       if (!userToCheck) {
         const newUser = new User({
           firstname: req.body.firstname,
