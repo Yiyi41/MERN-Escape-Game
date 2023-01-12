@@ -1,6 +1,4 @@
 const User = require("../models/UserModel");
-// import uid2 from "uid2";
-// import { SHA256, encBase64 } from "crypto-js";
 
 const uid2 = require("uid2");
 const SHA256 = require("crypto-js/sha256");
