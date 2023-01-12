@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 // import "../App.css";
 import Card from "@mui/material/Card";
@@ -44,7 +45,9 @@ function App() {
           </CardContent>
           <CardActions>
             {/* <Button size="small">Détail</Button> */}
-            <Button size="small">Réserver</Button>
+            <Link to="/room">
+              <Button size="small">Réserver</Button>
+            </Link>
           </CardActions>
         </Card>
       ))}

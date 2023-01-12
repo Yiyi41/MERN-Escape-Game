@@ -1,11 +1,32 @@
-// import { useState } from "react";
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
-// import "./App.css";
+//import components
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+//import pages
+import Home from "./pages/Home";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import Room from "./pages/Room";
 
-// function App() {
-//   const [count, setCount] = useState(0);
+import "./App.css";
 
-//   return <div>Hello World</div>;
-// }
+function App() {
+    const [user, setUser] = useState(0);
 
-// export default App;
+    return (
+        <div className="app">
+            <Header />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/room" element={<Room />} />
+            </Routes>
+            <Footer />
+        </div>
+    );
+}
+
+export default App;
