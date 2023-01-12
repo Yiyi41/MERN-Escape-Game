@@ -1,7 +1,5 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+const Room = () => {
+  return <div>Hello Room</div>;
+};
 
-
-
-
+export default Room;
