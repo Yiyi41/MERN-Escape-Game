@@ -8,7 +8,8 @@ const Room = mongoose.model(
     img: String,
     description: String,
     price: Number,
-    minplayers: Number
+    minplayers: Number,
+    booked: Array
 }
 )
 

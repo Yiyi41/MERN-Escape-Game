@@ -43,7 +43,7 @@ const Signup = () => {
     <Box
       onSubmit={handleSubmit}
       component="form"
-      className="signup-form"
+      className="form"
       sx={{
         "& .MuiTextField-root": {
           m: 1,

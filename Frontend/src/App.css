@@ -25,9 +25,9 @@
   background-color: #333333;
 }
 
-.signup-container {
+.form {
   display: flex;
+  text-align: center;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }

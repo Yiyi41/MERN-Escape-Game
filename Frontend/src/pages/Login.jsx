@@ -20,7 +20,8 @@ export default function Login() {
         event.preventDefault()
         //console.log(email, password)
         axios.post("http://localhost:3000/login", userLoggingIn)
-            .then(data => console.log(data))
+            .then(data => localStorage.setItem('token', data.data.userToken)
+            )
 
     }
 
@@ -33,6 +34,7 @@ export default function Login() {
             }}
             noValidate
             autoComplete="off"
+            className='form'
         >
             <TextField
                 id="login_form_email"
