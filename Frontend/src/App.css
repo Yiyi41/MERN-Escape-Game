@@ -31,3 +31,8 @@
   flex-direction: column;
   align-items: center;
 }
+
+.headerBtns a {
+  text-decoration: none;
+  color: white;
+}
