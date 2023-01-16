@@ -45,7 +45,7 @@ function App() {
           </CardContent>
           <CardActions>
             {/* <Button size="small">Détail</Button> */}
-            <Link to="/room">
+            <Link to={`/roomdetail/${room._id}`}>
               <Button size="small">Réserver</Button>
             </Link>
           </CardActions>
