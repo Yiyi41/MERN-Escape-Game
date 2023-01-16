@@ -36,9 +36,6 @@ const RoomDetail = () => {
   return isLoading ? (
     <span>En cours de chargement...</span>
   ) : (
-    // <div className="container">
-    //   <img src={details.img} alt="" />
-    // </div>
     <Card sx={{ maxWidth: 1000, margin: "auto", marginTop: 5 }}>
       <CardMedia
         sx={{ height: 500 }}
@@ -57,21 +54,30 @@ const RoomDetail = () => {
         </Typography>
       </CardContent>
       <CardActions>
-        {details.booked.map(() => (
+        {details.booked.map((item, index) => (
           <Box
+            key={index}
             sx={{
-              // width: 300,
               height: 80,
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
-              // backgroundColor: "primary.dark",
             }}
           >
-            <Button size="small" variant="contained" color="success">
+            <Button
+              size="small"
+              variant="contained"
+              color="success"
+              disabled={item.morning === true && true}
+            >
               MATIN
             </Button>
-            <Button size="small" variant="contained" color="success">
+            <Button
+              size="small"
+              variant="contained"
+              color="success"
+              disabled={item.afternoon === true && true}
+            >
               APRÈSM
             </Button>
           </Box>
