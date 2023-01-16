@@ -14,15 +14,16 @@ const RoomDetail = () => {
   const { id } = useParams();
   const [details, setDetails] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [update, setUpdate] = useState(false)
 
   useEffect(() => {
-    console.log(id);
+    //console.log(id);
     const fetchRoomDetail = async () => {
       try {
         const response = await axios.get(
           `http://localhost:3000/roomdetail/${id}`
         );
-        console.log(response.data);
+        //console.log(response.data);
         setDetails(response.data);
         setIsLoading(false);
         // console.log(details);
@@ -32,6 +33,14 @@ const RoomDetail = () => {
     };
     fetchRoomDetail();
   }, []);
+
+  const sendReservation = async () => {
+    try {
+
+    } catch (error) {
+
+    }
+  }
 
   return isLoading ? (
     <span>En cours de chargement...</span>
@@ -65,18 +74,28 @@ const RoomDetail = () => {
             }}
           >
             <Button
+              id="morning"
               size="small"
               variant="contained"
               color="success"
               disabled={item.morning === true && true}
+              onClick={() => {
+                setUpdate(!item.morning)
+                console.log(update)
+              }}
             >
               MATIN
             </Button>
             <Button
+              id="afternoon"
               size="small"
               variant="contained"
               color="success"
               disabled={item.afternoon === true && true}
+              onClick={() => {
+                setUpdate(!item.morning)
+                console.log(update)
+              }}
             >
               APRÈSM
             </Button>
