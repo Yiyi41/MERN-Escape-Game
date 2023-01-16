@@ -11,7 +11,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -56,6 +56,7 @@ const Signup = () => {
       {/* <div> */}
       <TextField
         required
+        fullWidth
         id="outlined-prénom"
         label="Prénom"
         value={firstName}

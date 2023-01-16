@@ -8,25 +8,25 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import Room from "./pages/Room";
+import RoomDetail from "./pages/RoomDetail";
 
 import "./App.css";
 
 function App() {
-    const [user, setUser] = useState(0);
+  const [user, setUser] = useState(0);
 
-    return (
-        <div className="app">
-            <Header />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/room" element={<Room />} />
-            </Routes>
-            <Footer />
-        </div>
-    );
+  return (
+    <div className="app">
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/roomdetail/:id" element={<RoomDetail />} />
+      </Routes>
+      <Footer />
+    </div>
+  );
 }
 
 export default App;

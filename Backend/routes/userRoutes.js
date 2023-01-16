@@ -1,6 +1,6 @@
 const User = require("../models/UserModel");
 
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
 const uid2 = require("uid2");
 const SHA256 = require("crypto-js/sha256");
 const encBase64 = require("crypto-js/enc-base64");
@@ -43,13 +43,12 @@ const userRoutes = (app) => {
         const hashToCheck = SHA256(req.body.password + saltToCheck).toString(
           encBase64
         );
-        // console.log(userToCheck.hashedPwd);
-        // console.log("hashToCheck", hashToCheck);
-        // console.log("userToCheck.hashedPwd", userToCheck.hashedPwd);
 
         if (hashToCheck === userToCheck.hashedPwd) {
           // res.json("C'est bon !")
-          const token = jwt.sign({ _id: userToCheck._id }, 'littlesecret', { expiresIn: '1h' })
+          const token = jwt.sign({ _id: userToCheck._id }, "littlesecret", {
+            expiresIn: "1h",
+          });
 
           res.json({ userToken: token, user: userToCheck });
         } else {
@@ -62,25 +61,25 @@ const userRoutes = (app) => {
   });
 
   function withAuth(req, res, next) {
-    const token = req.headers['authorization']
-    console.log(req.headers)
+    const token = req.headers["authorization"];
+    console.log(req.headers);
     if (token === null) {
-      res.json({ status: 401, msg: 'bad token 1' })
+      res.json({ status: 401, msg: "bad token 1" });
     }
-    jwt.verify(token, 'littlesecret', function (err, decoded) {
+    jwt.verify(token, "littlesecret", function (err, decoded) {
       if (err) {
-        res.json({ status: 401, msg: "bad token 2" })
-        console.log(err)
+        res.json({ status: 401, msg: "bad token 2" });
+        console.log(err);
       }
-      req.body._id = decoded._id
-      next()
-    })
+      req.body._id = decoded._id;
+      next();
+    });
   }
 
-  app.get('/checkToken', withAuth, async (req, res) => {
-    const userToCheck = await User.findOne({ _id: req.body._id })
-    res.json({ status: 200, msg: "token ok", user: userToCheck })
-  })
+  app.get("/checkToken", withAuth, async (req, res) => {
+    const userToCheck = await User.findOne({ _id: req.body._id });
+    res.json({ status: 200, msg: "token ok", user: userToCheck });
+  });
 };
 
 module.exports = userRoutes;
